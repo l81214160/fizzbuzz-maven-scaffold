@@ -24,7 +24,10 @@ public class FizzBuzzTest {
 	@Parameters
     public static Collection prepareData(){  
      return Arrays.asList(new Object[][] {
-            { 3, "Fizz" }
+            { 3, "Fizz" },
+            { 5, "Buzz" },
+            { 15, "FizzBuzz" },
+            { 88, "88" }
          });
     }  
 	
