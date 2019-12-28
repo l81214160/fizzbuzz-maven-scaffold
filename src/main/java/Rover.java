@@ -18,12 +18,12 @@ public class Rover {
 		this.direction = direction;
 		this.n = j;
 		
-		if (i > area.getI()) {
-			throw new IllegalArgumentException("x= " + i + "is out of area width" + area.getI());
+		if (m > area.getI()) {
+			throw new IllegalArgumentException("x= " + m + "is out of area width" + area.getI());
 		}
 
-		if (j > area.getJ()) {
-			throw new IllegalArgumentException("y = " + j + " is out of area width " + area.getJ());
+		if (n > area.getJ()) {
+			throw new IllegalArgumentException("y = " + n + " is out of area width " + area.getJ());
 		}
 
 	}
@@ -43,12 +43,24 @@ public class Rover {
 	public void move() {
 		if (North.equals(direction)) {
 			n = n + 1;
+			if (n > area.getJ()) {
+				throw new IllegalArgumentException("y = " + n + " is out of area width " + area.getJ());
+			}
 		} else if (Sourth.equals(direction)) {
 			n = n - 1;
+			if (n > area.getJ()) {
+				throw new IllegalArgumentException("y = " + n + " is out of area width " + area.getJ());
+			}
 		} else if (East.equals(direction)) {
 			m = m + 1;
+			if (m > area.getI()) {
+				throw new IllegalArgumentException("x= " + m + "is out of area width" + area.getI());
+			}
 		} else if (West.equals(direction)) {
 			m = m - 1;
+			if (m > area.getI()) {
+				throw new IllegalArgumentException("x= " + m + "is out of area width" + area.getI());
+			}
 		}
 	}
 
@@ -82,7 +94,7 @@ public class Rover {
 	public static void main(String[] args) {
 		Rover rover = new Rover();
 		RoverController roverController = new RoverController(rover);
-		String mission = "10,10,5,5,E,M,L,M,R,R,M,R,M,M,R,M,M,M,M,L,R";
+		String mission = "20,25,15,22,E,M,L,M,R,R,M,R,M,M,R,M,M,M,M,L,R,M,L,M";
 		String postion = roverController.excute(mission);
 		System.out.println(postion);
 	}
